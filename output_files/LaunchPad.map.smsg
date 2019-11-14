@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at LaunchPad.v(81): always construct contains both blocking and non-blocking assignments File: C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/LaunchPad.v Line: 81

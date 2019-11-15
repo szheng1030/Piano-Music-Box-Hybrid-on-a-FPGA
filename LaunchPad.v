@@ -57,18 +57,97 @@ module LaunchPad(
 		.FPGA_I2C_SDAT(FPGA_I2C_SDAT)
 	);
 
+	
+	parameter HZ_C = 32'd191109; 		//191109.58
+	parameter HZ_D = 32'd170265;		//170264.93
+	parameter HZ_E = 32'd151685;		//151685.22
+	parameter HZ_F = 32'd143172;		//143172.12
+	parameter HZ_G = 32'd127551;		//127551.02
+	parameter HZ_A = 32'd113636;		//113636.36
+	parameter HZ_B = 32'd101239;		//101239.17
+	parameter HZ_CC = 32'd95556;		//95556.62
+	
+	wire signed [31:0] audio_out_C;
+	wire signed [31:0] audio_out_D;
+	wire signed [31:0] audio_out_E;
+	wire signed [31:0] audio_out_F;
+	wire signed [31:0] audio_out_G;
+	wire signed [31:0] audio_out_A;
+	wire signed [31:0] audio_out_B;
+	wire signed [31:0] audio_out_CC;
 
 	wire audio_out_allowed = 1'b1;
-	wire clear_audio_out_memory, write_audio_out;
-	wire signed [31:0] audio_out;
-
-	Wave_Generator WG(
+	wire clear_audio_out_memory;
+	wire write_audio_out;
+	wire signed [31:0] audio_out = audio_out_C + audio_out_D + audio_out_E + audio_out_F
+												+ audio_out_G + audio_out_A + audio_out_B + audio_out_CC;
+												
+	assign clear_audio_out_memory = ~|audio_out;
+	assign write_audio_out = |audio_out;
+	
+	Wave_Generator WG_C(
 		.clock(CLOCK_50),
 		.reset(SW[9]),
-		.play_C(~KEY[1]),
-		.clear_audio_out_memory(clear_audio_out_memory),
-		.write_audio_out(write_audio_out),
-		.audio_out(audio_out[31:0])
+		.play_note(SW[0]),
+		.hz(HZ_C[31:0]),
+		.audio_out(audio_out_C[31:0])
+		);
+		
+	Wave_Generator WG_D(
+		.clock(CLOCK_50),
+		.reset(SW[9]),
+		.play_note(SW[1]),
+		.hz(HZ_D[31:0]),
+		.audio_out(audio_out_D[31:0])
+		);
+	
+	Wave_Generator WG_E(
+		.clock(CLOCK_50),
+		.reset(SW[9]),
+		.play_note(SW[2]),
+		.hz(HZ_E[31:0]),
+		.audio_out(audio_out_E[31:0])
+		);
+		
+	Wave_Generator WG_F(
+		.clock(CLOCK_50),
+		.reset(SW[9]),
+		.play_note(SW[3]),
+		.hz(HZ_F[31:0]),
+		.audio_out(audio_out_F[31:0])
+		);
+		
+	Wave_Generator WG_G(
+		.clock(CLOCK_50),
+		.reset(SW[9]),
+		.play_note(SW[4]),
+		.hz(HZ_G[31:0]),
+		.audio_out(audio_out_G[31:0])
+		);
+		
+	Wave_Generator WG_A(
+		.clock(CLOCK_50),
+		.reset(SW[9]),
+		.play_note(SW[5]),
+		.hz(HZ_A[31:0]),
+		.audio_out(audio_out_A[31:0])
+		);
+		
+	Wave_Generator WG_B(
+		.clock(CLOCK_50),
+		.reset(SW[9]),
+		.play_note(SW[6]),
+		.hz(HZ_B[31:0]),
+		.audio_out(audio_out_B[31:0])
+		);
+		
+		
+	Wave_Generator WG_CC(
+		.clock(CLOCK_50),
+		.reset(SW[9]),
+		.play_note(SW[7]),
+		.hz(HZ_CC[31:0]),
+		.audio_out(audio_out_CC[31:0])
 		);
 
 endmodule
@@ -76,53 +155,36 @@ endmodule
 module Wave_Generator(
 	input clock,
 	input reset,
-	input play_C,
-	output reg clear_audio_out_memory,
-	output reg write_audio_out,
+	input play_note,
+	input [31:0]hz,
 	output [31:0]audio_out
 	);
-
-	localparam AMPLITUDE = 32'd613566756; 			//max 32b / 7, maybe tune it down a bit mah ears hurt
-	localparam CYCLES_C = 32'd191570;
 	
-	reg signed [31:0]amp_C;
-	reg [31:0] counter_C;
-	wire signed [31:0] audio_out_C = play_C ? amp_C : 32'b0;
-
-
-	assign audio_out = audio_out_C;
+	localparam AMPLITUDE = 32'd300000000;		//536870911.9
+	
+	reg signed [31:0]amp;
+	
+	reg [31:0] counter;
+	
+	assign audio_out[31:0] = play_note ? amp : 32'b0;
 
 	always@(posedge clock)	begin
 
-		clear_audio_out_memory <= 1'b0;
-
 		if (reset) begin
-			clear_audio_out_memory <= 1'b1;
-			write_audio_out <= 1'b0;
-			amp_C <= 32'b0;
-			counter_C <= CYCLES_C;
+			amp <= 32'b0;
+			counter <= hz;
 			end
-		if (play_C) begin
-			// Okay thing, make sound plz thx
-			write_audio_out <= 1'b1;
-			//Every CLOCK_50 counter go down 1
-			counter_C <= counter_C - 1'b1;
-			// If counter > half, positive amplitude
-			if (counter_C > (CYCLES_C / 2)) begin
-				amp_C <= AMPLITUDE;
+		if (play_note) begin
+			counter <= counter - 1'b1;
+			if (counter > (hz / 2)) begin
+				amp <= AMPLITUDE;
 				end
-			// If counter < half, negative amplitude
-			if (counter_C <= (CYCLES_C / 2)) begin
-				amp_C <= -AMPLITUDE;
+			if (counter <= (hz / 2)) begin
+				amp <= -AMPLITUDE;
 				end
-			// If counter is zero, reset cycles
-			if (counter_C == 0) begin
-				counter_C <= CYCLES_C;
+			if (counter == 0) begin
+				counter <= hz;
 				end
-			end
-		if (!play_C && !reset) begin
-			clear_audio_out_memory <= 1'b1;
-			write_audio_out <= 1'b0;
 			end
 	end
 endmodule

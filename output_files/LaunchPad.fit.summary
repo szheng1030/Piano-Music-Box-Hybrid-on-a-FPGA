@@ -1,12 +1,12 @@
-Fitter Status : Successful - Thu Nov 14 05:58:50 2019
+Fitter Status : Successful - Fri Nov 15 18:09:45 2019
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : LaunchPad
 Top-level Entity Name : LaunchPad
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 160 / 32,070 ( < 1 % )
-Total registers : 206
+Logic utilization (in ALMs) : 447 / 32,070 ( 1 % )
+Total registers : 474
 Total pins : 22 / 457 ( 5 % )
 Total virtual pins : 0
 Total block memory bits : 8,192 / 4,065,280 ( < 1 % )

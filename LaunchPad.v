@@ -46,7 +46,7 @@ module LaunchPad(
 		.audio_out_allowed(audio_out_allowed),
 
 		.AUD_XCK(AUD_XCK),
-		.AUD_DACDAT(AUD_DACDAT),
+		.AUD_DACDAT(AUD_DACDAT)
 	);
 
 	avconf u0(
@@ -68,7 +68,7 @@ module LaunchPad(
 		.play_C(~KEY[1]),
 		.clear_audio_out_memory(clear_audio_out_memory),
 		.write_audio_out(write_audio_out),
-		.audio_out(audio_out),
+		.audio_out(audio_out[31:0])
 		);
 
 endmodule
@@ -79,15 +79,16 @@ module Wave_Generator(
 	input play_C,
 	output reg clear_audio_out_memory,
 	output reg write_audio_out,
-	output audio_out
+	output [31:0]audio_out
 	);
 
-	localparam AMPLITUDE = 32'd613566756; 			//max 32b / 7
+	localparam AMPLITUDE = 32'd613566756; 			//max 32b / 7, maybe tune it down a bit mah ears hurt
 	localparam CYCLES_C = 32'd191570;
-
-	wire signed [31:0] audio_out_C = play_C ? amp_C : 32'b0;
+	
 	reg signed [31:0]amp_C;
 	reg [31:0] counter_C;
+	wire signed [31:0] audio_out_C = play_C ? amp_C : 32'b0;
+
 
 	assign audio_out = audio_out_C;
 

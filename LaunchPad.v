@@ -1,8 +1,3 @@
-// Reset: SW[9] active high
-// Play C Note: KEY[1] active low
-
-
-
 module LaunchPad(
 	input CLOCK_50,
 	input [9:0]SW,
@@ -23,15 +18,15 @@ module LaunchPad(
 		.CLOCK_50(CLOCK_50),
 		.reset(SW[9]),
 
-		.clear_audio_in_memory(),			// For mic input, ignore for now
-		.read_audio_in(),							// For mic input, ignore for now
+		.clear_audio_in_memory(),				// For mic input
+		.read_audio_in(),							// For mic input
 
 		.clear_audio_out_memory(clear_audio_out_memory),
 		.left_channel_audio_out(audio_out),
 		.right_channel_audio_out(audio_out),
 		.write_audio_out(write_audio_out),
 
-		.AUD_ADCDAT(),								// For mic input, ignore for now
+		.AUD_ADCDAT(),								// For mic input
 
 		// Bidirectionals
 		.AUD_BCLK(AUD_BCLK),
@@ -39,9 +34,9 @@ module LaunchPad(
 		.AUD_DACLRCK(AUD_DACLRCK),
 
 		// Outputs
-		.left_channel_audio_in(),			// For mic input, ignore for now
-		.right_channel_audio_in(),		// For mic input, ignore for now
-		.audio_in_available(),				// For mic input, ignore for now
+		.left_channel_audio_in(),				// For mic input
+		.right_channel_audio_in(),				// For mic input
+		.audio_in_available(),					// For mic input
 
 		.audio_out_allowed(audio_out_allowed),
 
@@ -75,15 +70,39 @@ module LaunchPad(
 	wire signed [31:0] audio_out_A;
 	wire signed [31:0] audio_out_B;
 	wire signed [31:0] audio_out_CC;
+	wire signed [31:0] testing;
 
 	wire audio_out_allowed = 1'b1;
 	wire clear_audio_out_memory;
 	wire write_audio_out;
 	wire signed [31:0] audio_out = audio_out_C + audio_out_D + audio_out_E + audio_out_F
-												+ audio_out_G + audio_out_A + audio_out_B + audio_out_CC;
+												+ audio_out_G + audio_out_A + audio_out_B + audio_out_CC + testing;
 												
 	assign clear_audio_out_memory = ~|audio_out;
 	assign write_audio_out = |audio_out;
+	
+	reg [7:0] Mid_C [0:261];
+	reg [2095:0] test_c;
+	integer i;
+	
+    initial begin
+        $readmemh("test2.mem", Mid_C);
+    end
+	
+	always@(*) begin
+		for (i=0;i<262;i=i+1) begin
+			test_c[2095-(i*8)-:8] = Mid_C[i];
+			end
+	end
+	
+	test t1(
+		.clock(CLOCK_50),
+		.reset(SW[9]),
+		.play_note(~KEY[2]),
+		.mod(test_c[2095:0]),
+		.hz(32'd190840),
+		.audio_out(testing[31:0])
+		);
 	
 	Wave_Generator WG_C(
 		.clock(CLOCK_50),
@@ -168,7 +187,7 @@ module Wave_Generator(
 	
 	assign audio_out[31:0] = play_note ? amp : 32'b0;
 
-	always@(posedge clock)	begin
+	always@(posedge clock)begin
 
 		if (reset) begin
 			amp <= 32'b0;
@@ -185,6 +204,69 @@ module Wave_Generator(
 			if (counter == 0) begin
 				counter <= hz;
 				end
-			end
+		end
 	end
 endmodule
+
+
+
+module test(
+	input clock,
+	input reset,
+	input play_note,
+	input [2095:0]mod,
+	input [31:0]hz,
+	output [31:0]audio_out
+	);
+	
+	localparam AMPLITUDE = 32'd3000000;
+	
+	reg [7:0]modd[0:261];
+	integer i;
+	
+	always@(*) begin
+		for (i=0;i<262;i=i+1) begin
+			modd[i]=mod[2095-(i*8)-:8];
+			end
+	end
+	
+	
+	reg signed [31:0]amp;
+	
+	reg [31:0] counter;
+	reg [8:0] c2;
+	
+	assign audio_out[31:0] = play_note ? amp : 32'b0;
+
+	always@(posedge clock)begin
+
+		if (reset) begin
+			amp <= 32'b0;
+			counter <= hz;
+			c2 <= 9'b0;
+			end
+		if (play_note) begin
+			counter <= counter - 1'b1;
+			if (counter > (hz / 2)) begin
+				amp <= (AMPLITUDE * modd[c2]);
+				end
+			if (counter <= (hz / 2)) begin
+				amp <= -(AMPLITUDE * modd[c2]);
+				end
+			if (counter == 0) begin
+				counter <= hz;
+				c2 <= c2 + 1'b1;
+				end
+			if (c2 >= 9'd262) begin
+				c2 <= 9'd262;
+				end
+		end
+	end
+endmodule
+
+
+
+
+
+
+

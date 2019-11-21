@@ -101,19 +101,19 @@ module LaunchPad(
 		.audio_out(audio_out_C[31:0])
 		);
 
-	Triangle_Wave TW_C(
+	Scratch_Wave ScW_C(
 			.clock(CLOCK_50),
 			.reset(SW[9]),
 			.play_note(SW[1]),
-			.hz(HZ_C[31:0]),
+			.hz(HZ_1C[31:0]),
 			.audio_out(audio_out_D[31:0])
 			);
 
-	Triangle_Wave SW_1C(
+	Triangle_Wave tw_C(
 			.clock(CLOCK_50),
 			.reset(SW[9]),
 			.play_note(SW[2]),
-			.hz(HZ_1C[31:0]),
+			.hz(HZ_C[31:0]),
 			.audio_out(audio_out_E[31:0])
 			);
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for LaunchPad
-Thu Nov 21 08:50:33 2019
+Thu Nov 21 09:31:59 2019
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -41,8 +41,8 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
  33. Parameter Settings for User Entity Instance: avconf:u0
  34. scfifo Parameter Settings by Entity Instance
  35. altpll Parameter Settings by Entity Instance
- 36. Port Connectivity Checks: "Triangle_Wave:SW_1C"
- 37. Port Connectivity Checks: "Triangle_Wave:TW_C"
+ 36. Port Connectivity Checks: "Triangle_Wave:tw_C"
+ 37. Port Connectivity Checks: "Scratch_Wave:ScW_C"
  38. Port Connectivity Checks: "Square_Wave:SW_C"
  39. Port Connectivity Checks: "avconf:u0|I2C_Controller:u0"
  40. Port Connectivity Checks: "Audio_Controller:AC|Audio_Clock:Audio_Clock"
@@ -77,17 +77,17 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Nov 21 08:50:33 2019       ;
+; Analysis & Synthesis Status     ; Successful - Thu Nov 21 09:31:59 2019       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; LaunchPad                                   ;
 ; Top-level Entity Name           ; LaunchPad                                   ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 264                                         ;
+; Total registers                 ; 355                                         ;
 ; Total pins                      ; 22                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 8,192                                       ;
-; Total DSP Blocks                ; 18                                          ;
+; Total DSP Blocks                ; 106                                         ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
 ; Total HSSI TX PCSs              ; 0                                           ;
@@ -210,6 +210,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------+---------+
 ; Triangle_Wave.v                                    ; yes             ; User Verilog HDL File        ; C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/Triangle_Wave.v                                    ;         ;
 ; Square_Wave.v                                      ; yes             ; User Verilog HDL File        ; C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/Square_Wave.v                                      ;         ;
+; Scratch_Wave.v                                     ; yes             ; User Verilog HDL File        ; C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/Scratch_Wave.v                                     ;         ;
 ; avconf/I2C_Controller.v                            ; yes             ; User Verilog HDL File        ; C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/avconf/I2C_Controller.v                            ;         ;
 ; avconf/avconf.v                                    ; yes             ; User Verilog HDL File        ; C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/avconf/avconf.v                                    ;         ;
 ; Audio_Controller/Audio_Controller.v                ; yes             ; User Verilog HDL File        ; C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/Audio_Controller/Audio_Controller.v                ;         ;
@@ -247,30 +248,30 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 508            ;
+; Estimate of Logic utilization (ALMs needed) ; 2166           ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 806            ;
-;     -- 7 input functions                    ; 7              ;
-;     -- 6 input functions                    ; 200            ;
-;     -- 5 input functions                    ; 194            ;
-;     -- 4 input functions                    ; 131            ;
-;     -- <=3 input functions                  ; 274            ;
+; Combinational ALUT usage for logic          ; 3156           ;
+;     -- 7 input functions                    ; 9              ;
+;     -- 6 input functions                    ; 1163           ;
+;     -- 5 input functions                    ; 756            ;
+;     -- 4 input functions                    ; 477            ;
+;     -- <=3 input functions                  ; 751            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 264            ;
+; Dedicated logic registers                   ; 355            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 22             ;
 ; Total MLAB memory bits                      ; 0              ;
 ; Total block memory bits                     ; 8192           ;
 ;                                             ;                ;
-; Total DSP Blocks                            ; 18             ;
+; Total DSP Blocks                            ; 106            ;
 ;                                             ;                ;
 ; Total PLLs                                  ; 1              ;
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 271            ;
-; Total fan-out                               ; 5275           ;
-; Average fan-out                             ; 4.39           ;
+; Maximum fan-out                             ; 362            ;
+; Total fan-out                               ; 15449          ;
+; Average fan-out                             ; 4.14           ;
 +---------------------------------------------+----------------+
 
 
@@ -279,7 +280,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------+
 ; Compilation Hierarchy Node                                  ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                          ; Entity Name                    ; Library Name ;
 +-------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------+
-; |LaunchPad                                                  ; 806 (68)            ; 264 (0)                   ; 8192              ; 18         ; 22   ; 0            ; |LaunchPad                                                                                                                                                                                                                   ; LaunchPad                      ; work         ;
+; |LaunchPad                                                  ; 3156 (69)           ; 355 (0)                   ; 8192              ; 106        ; 22   ; 0            ; |LaunchPad                                                                                                                                                                                                                   ; LaunchPad                      ; work         ;
 ;    |Audio_Controller:AC|                                    ; 178 (2)             ; 110 (2)                   ; 8192              ; 0          ; 0    ; 0            ; |LaunchPad|Audio_Controller:AC                                                                                                                                                                                               ; Audio_Controller               ; work         ;
 ;       |Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer| ; 176 (64)            ; 104 (38)                  ; 8192              ; 0          ; 0    ; 0            ; |LaunchPad|Audio_Controller:AC|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer                                                                                                                                           ; Altera_UP_Audio_Out_Serializer ; work         ;
 ;          |Altera_UP_SYNC_FIFO:Audio_Out_Left_Channel_FIFO|  ; 63 (0)              ; 33 (0)                    ; 4096              ; 0          ; 0    ; 0            ; |LaunchPad|Audio_Controller:AC|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|Altera_UP_SYNC_FIFO:Audio_Out_Left_Channel_FIFO                                                                                           ; Altera_UP_SYNC_FIFO            ; work         ;
@@ -303,11 +304,11 @@ refer to the applicable agreement for further details.
 ;       |Audio_Clock:Audio_Clock|                             ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |LaunchPad|Audio_Controller:AC|Audio_Clock:Audio_Clock                                                                                                                                                                       ; Audio_Clock                    ; work         ;
 ;          |altpll:altpll_component|                          ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |LaunchPad|Audio_Controller:AC|Audio_Clock:Audio_Clock|altpll:altpll_component                                                                                                                                               ; altpll                         ; work         ;
 ;             |Audio_Clock_altpll:auto_generated|             ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |LaunchPad|Audio_Controller:AC|Audio_Clock:Audio_Clock|altpll:altpll_component|Audio_Clock_altpll:auto_generated                                                                                                             ; Audio_Clock_altpll             ; work         ;
-;    |Square_Wave:SW_C|                                       ; 393 (393)           ; 55 (55)                   ; 0                 ; 6          ; 0    ; 0            ; |LaunchPad|Square_Wave:SW_C                                                                                                                                                                                                  ; Square_Wave                    ; work         ;
-;    |Triangle_Wave:SW_1C|                                    ; 35 (35)             ; 12 (12)                   ; 0                 ; 6          ; 0    ; 0            ; |LaunchPad|Triangle_Wave:SW_1C                                                                                                                                                                                               ; Triangle_Wave                  ; work         ;
-;    |Triangle_Wave:TW_C|                                     ; 35 (35)             ; 12 (12)                   ; 0                 ; 6          ; 0    ; 0            ; |LaunchPad|Triangle_Wave:TW_C                                                                                                                                                                                                ; Triangle_Wave                  ; work         ;
-;    |avconf:u0|                                              ; 97 (53)             ; 75 (45)                   ; 0                 ; 0          ; 0    ; 0            ; |LaunchPad|avconf:u0                                                                                                                                                                                                         ; avconf                         ; work         ;
-;       |I2C_Controller:u0|                                   ; 44 (44)             ; 30 (30)                   ; 0                 ; 0          ; 0    ; 0            ; |LaunchPad|avconf:u0|I2C_Controller:u0                                                                                                                                                                                       ; I2C_Controller                 ; work         ;
+;    |Scratch_Wave:ScW_C|                                     ; 2061 (2061)         ; 58 (58)                   ; 0                 ; 94         ; 0    ; 0            ; |LaunchPad|Scratch_Wave:ScW_C                                                                                                                                                                                                ; Scratch_Wave                   ; work         ;
+;    |Square_Wave:SW_C|                                       ; 374 (374)           ; 55 (55)                   ; 0                 ; 6          ; 0    ; 0            ; |LaunchPad|Square_Wave:SW_C                                                                                                                                                                                                  ; Square_Wave                    ; work         ;
+;    |Triangle_Wave:tw_C|                                     ; 383 (383)           ; 57 (57)                   ; 0                 ; 6          ; 0    ; 0            ; |LaunchPad|Triangle_Wave:tw_C                                                                                                                                                                                                ; Triangle_Wave                  ; work         ;
+;    |avconf:u0|                                              ; 91 (53)             ; 75 (45)                   ; 0                 ; 0          ; 0    ; 0            ; |LaunchPad|avconf:u0                                                                                                                                                                                                         ; avconf                         ; work         ;
+;       |I2C_Controller:u0|                                   ; 38 (38)             ; 30 (30)                   ; 0                 ; 0          ; 0    ; 0            ; |LaunchPad|avconf:u0|I2C_Controller:u0                                                                                                                                                                                       ; I2C_Controller                 ; work         ;
 +-------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -327,11 +328,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------+-------------+
 ; Statistic                       ; Number Used ;
 +---------------------------------+-------------+
-; Two Independent 18x18           ; 9           ;
-; Independent 18x18 plus 36       ; 9           ;
-; Total number of DSP blocks      ; 18          ;
+; Two Independent 18x18           ; 53          ;
+; Independent 18x18 plus 36       ; 53          ;
+; Total number of DSP blocks      ; 106         ;
 ;                                 ;             ;
-; Fixed Point Unsigned Multiplier ; 18          ;
+; Fixed Point Unsigned Multiplier ; 106         ;
 +---------------------------------+-------------+
 
 
@@ -383,43 +384,19 @@ Encoding Type:  One-Hot
 ; Audio_Controller:AC|Altera_UP_Clock_Edge:ADC_Left_Right_Clock_Edges|cur_test_clk                                                                                                                                                        ; Lost fanout                                    ;
 ; avconf:u0|mI2C_DATA[16,17,19,23]                                                                                                                                                                                                        ; Stuck at GND due to stuck port data_in         ;
 ; avconf:u0|I2C_Controller:u0|SD[16,17,19,23]                                                                                                                                                                                             ; Stuck at GND due to stuck port data_in         ;
-; Triangle_Wave:SW_1C|amp[1..6]                                                                                                                                                                                                           ; Merged with Triangle_Wave:SW_1C|amp[0]         ;
-; Triangle_Wave:TW_C|amp[1..6]                                                                                                                                                                                                            ; Merged with Triangle_Wave:TW_C|amp[0]          ;
+; Triangle_Wave:tw_C|amp[1..6]                                                                                                                                                                                                            ; Merged with Triangle_Wave:tw_C|amp[0]          ;
 ; Square_Wave:SW_C|amp[30,31]                                                                                                                                                                                                             ; Merged with Square_Wave:SW_C|amp[29]           ;
 ; Square_Wave:SW_C|amp[27]                                                                                                                                                                                                                ; Merged with Square_Wave:SW_C|amp[26]           ;
 ; Square_Wave:SW_C|amp[1..5]                                                                                                                                                                                                              ; Merged with Square_Wave:SW_C|amp[0]            ;
-; Triangle_Wave:SW_1C|counter[2,5..7,9,11,13,17,19..31]                                                                                                                                                                                   ; Merged with Triangle_Wave:SW_1C|counter[0]     ;
-; Triangle_Wave:SW_1C|counter[1,3,4,8,12,14..16,18]                                                                                                                                                                                       ; Merged with Triangle_Wave:SW_1C|counter[10]    ;
-; Triangle_Wave:TW_C|counter[1,3..6,8,12,16,18..31]                                                                                                                                                                                       ; Merged with Triangle_Wave:TW_C|counter[10]     ;
-; Triangle_Wave:TW_C|counter[2,7,9,11,13..15,17]                                                                                                                                                                                          ; Merged with Triangle_Wave:TW_C|counter[0]      ;
 ; avconf:u0|I2C_Controller:u0|SD[20,21]                                                                                                                                                                                                   ; Merged with avconf:u0|I2C_Controller:u0|SD[18] ;
 ; avconf:u0|mI2C_DATA[20,21]                                                                                                                                                                                                              ; Merged with avconf:u0|mI2C_DATA[18]            ;
-; Triangle_Wave:SW_1C|counter[0]                                                                                                                                                                                                          ; Stuck at GND due to stuck port data_in         ;
-; Triangle_Wave:TW_C|counter[10]                                                                                                                                                                                                          ; Stuck at GND due to stuck port data_in         ;
-; Triangle_Wave:TW_C|amp[0]                                                                                                                                                                                                               ; Stuck at GND due to stuck port data_in         ;
-; Triangle_Wave:SW_1C|amp[0]                                                                                                                                                                                                              ; Stuck at GND due to stuck port data_in         ;
 ; Square_Wave:SW_C|amp[0]                                                                                                                                                                                                                 ; Stuck at GND due to stuck port data_in         ;
-; Triangle_Wave:TW_C|counter[0]                                                                                                                                                                                                           ; Stuck at VCC due to stuck port data_in         ;
-; Triangle_Wave:SW_1C|counter[10]                                                                                                                                                                                                         ; Stuck at VCC due to stuck port data_in         ;
+; Triangle_Wave:tw_C|amp[0]                                                                                                                                                                                                               ; Stuck at GND due to stuck port data_in         ;
+; Scratch_Wave:ScW_C|amp[0..4]                                                                                                                                                                                                            ; Stuck at GND due to stuck port data_in         ;
 ; avconf:u0|mSetup_ST~9                                                                                                                                                                                                                   ; Lost fanout                                    ;
 ; avconf:u0|mSetup_ST~10                                                                                                                                                                                                                  ; Lost fanout                                    ;
-; Triangle_Wave:TW_C|amp[7]                                                                                                                                                                                                               ; Merged with Triangle_Wave:TW_C|amp[28]         ;
-; Triangle_Wave:TW_C|amp[8]                                                                                                                                                                                                               ; Merged with Triangle_Wave:TW_C|amp[12]         ;
-; Triangle_Wave:TW_C|amp[26,30]                                                                                                                                                                                                           ; Merged with Triangle_Wave:TW_C|amp[10]         ;
-; Triangle_Wave:TW_C|amp[18,29,31]                                                                                                                                                                                                        ; Merged with Triangle_Wave:TW_C|amp[11]         ;
-; Triangle_Wave:TW_C|amp[27]                                                                                                                                                                                                              ; Merged with Triangle_Wave:TW_C|amp[14]         ;
-; Triangle_Wave:TW_C|amp[21..23]                                                                                                                                                                                                          ; Merged with Triangle_Wave:TW_C|amp[15]         ;
-; Triangle_Wave:TW_C|amp[24]                                                                                                                                                                                                              ; Merged with Triangle_Wave:TW_C|amp[16]         ;
-; Triangle_Wave:TW_C|amp[19]                                                                                                                                                                                                              ; Merged with Triangle_Wave:TW_C|amp[17]         ;
-; Triangle_Wave:SW_1C|amp[7]                                                                                                                                                                                                              ; Merged with Triangle_Wave:SW_1C|amp[28]        ;
-; Triangle_Wave:SW_1C|amp[8]                                                                                                                                                                                                              ; Merged with Triangle_Wave:SW_1C|amp[12]        ;
-; Triangle_Wave:SW_1C|amp[26,30]                                                                                                                                                                                                          ; Merged with Triangle_Wave:SW_1C|amp[10]        ;
-; Triangle_Wave:SW_1C|amp[18,29,31]                                                                                                                                                                                                       ; Merged with Triangle_Wave:SW_1C|amp[11]        ;
-; Triangle_Wave:SW_1C|amp[27]                                                                                                                                                                                                             ; Merged with Triangle_Wave:SW_1C|amp[14]        ;
-; Triangle_Wave:SW_1C|amp[21..23]                                                                                                                                                                                                         ; Merged with Triangle_Wave:SW_1C|amp[15]        ;
-; Triangle_Wave:SW_1C|amp[24]                                                                                                                                                                                                             ; Merged with Triangle_Wave:SW_1C|amp[16]        ;
-; Triangle_Wave:SW_1C|amp[19]                                                                                                                                                                                                             ; Merged with Triangle_Wave:SW_1C|amp[17]        ;
-; Total Number of Removed Registers = 239                                                                                                                                                                                                 ;                                                ;
+; Scratch_Wave:ScW_C|amp[30]                                                                                                                                                                                                              ; Merged with Scratch_Wave:ScW_C|amp[29]         ;
+; Total Number of Removed Registers = 148                                                                                                                                                                                                 ;                                                ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------+
 
 
@@ -458,12 +435,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 264   ;
-; Number of registers using Synchronous Clear  ; 136   ;
-; Number of registers using Synchronous Load   ; 32    ;
+; Total registers                              ; 355   ;
+; Number of registers using Synchronous Clear  ; 163   ;
+; Number of registers using Synchronous Load   ; 96    ;
 ; Number of registers using Asynchronous Clear ; 39    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 192   ;
+; Number of registers using Clock Enable       ; 283   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -473,31 +450,33 @@ Encoding Type:  One-Hot
 +-------------------------------------------+---------+
 ; Inverted Register                         ; Fan out ;
 +-------------------------------------------+---------+
-; avconf:u0|I2C_Controller:u0|SCLK          ; 2       ;
-; avconf:u0|I2C_Controller:u0|SD_COUNTER[5] ; 19      ;
-; avconf:u0|I2C_Controller:u0|SD_COUNTER[4] ; 22      ;
-; avconf:u0|I2C_Controller:u0|SD_COUNTER[3] ; 26      ;
-; avconf:u0|I2C_Controller:u0|SD_COUNTER[2] ; 23      ;
-; avconf:u0|I2C_Controller:u0|SD_COUNTER[1] ; 20      ;
-; avconf:u0|I2C_Controller:u0|SD_COUNTER[0] ; 27      ;
-; avconf:u0|I2C_Controller:u0|END           ; 5       ;
+; avconf:u0|I2C_Controller:u0|SCLK          ; 3       ;
+; avconf:u0|I2C_Controller:u0|SD_COUNTER[5] ; 18      ;
+; avconf:u0|I2C_Controller:u0|SD_COUNTER[4] ; 20      ;
+; avconf:u0|I2C_Controller:u0|SD_COUNTER[3] ; 24      ;
+; avconf:u0|I2C_Controller:u0|SD_COUNTER[2] ; 21      ;
+; avconf:u0|I2C_Controller:u0|SD_COUNTER[1] ; 17      ;
+; avconf:u0|I2C_Controller:u0|SD_COUNTER[0] ; 21      ;
+; avconf:u0|I2C_Controller:u0|END           ; 6       ;
 ; avconf:u0|I2C_Controller:u0|SDO           ; 2       ;
 ; Total number of inverted registers = 9    ;         ;
 +-------------------------------------------+---------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                         ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------+
-; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |LaunchPad|Square_Wave:SW_C|counter[4]                                                                   ;
-; 6:1                ; 31 bits   ; 124 LEs       ; 62 LEs               ; 62 LEs                 ; Yes        ; |LaunchPad|Audio_Controller:AC|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|data_out_shift_reg[5] ;
-; 9:1                ; 26 bits   ; 156 LEs       ; 104 LEs              ; 52 LEs                 ; Yes        ; |LaunchPad|Triangle_Wave:TW_C|amp[22]                                                                    ;
-; 9:1                ; 26 bits   ; 156 LEs       ; 104 LEs              ; 52 LEs                 ; Yes        ; |LaunchPad|Triangle_Wave:SW_1C|amp[14]                                                                   ;
-; 22:1               ; 24 bits   ; 336 LEs       ; 312 LEs              ; 24 LEs                 ; Yes        ; |LaunchPad|Square_Wave:SW_C|amp[24]                                                                      ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |LaunchPad|avconf:u0|I2C_Controller:u0|SD_COUNTER[5]                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------+
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |LaunchPad|Scratch_Wave:ScW_C|counter[6]                                                                  ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |LaunchPad|Square_Wave:SW_C|counter[31]                                                                   ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |LaunchPad|Triangle_Wave:tw_C|counter[29]                                                                 ;
+; 6:1                ; 31 bits   ; 124 LEs       ; 62 LEs               ; 62 LEs                 ; Yes        ; |LaunchPad|Audio_Controller:AC|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|data_out_shift_reg[30] ;
+; 22:1               ; 24 bits   ; 336 LEs       ; 312 LEs              ; 24 LEs                 ; Yes        ; |LaunchPad|Square_Wave:SW_C|amp[13]                                                                       ;
+; 22:1               ; 26 bits   ; 364 LEs       ; 338 LEs              ; 26 LEs                 ; Yes        ; |LaunchPad|Triangle_Wave:tw_C|amp[14]                                                                     ;
+; 63:1               ; 32 bits   ; 1344 LEs      ; 1280 LEs             ; 64 LEs                 ; Yes        ; |LaunchPad|Scratch_Wave:ScW_C|amp[21]                                                                     ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |LaunchPad|avconf:u0|I2C_Controller:u0|SD_COUNTER[0]                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1219,31 +1198,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+---------------------------------------------------------------------+
 
 
-+-------------------------------------------------+
-; Port Connectivity Checks: "Triangle_Wave:SW_1C" ;
-+------------+-------+----------+-----------------+
-; Port       ; Type  ; Severity ; Details         ;
-+------------+-------+----------+-----------------+
-; hz[16..14] ; Input ; Info     ; Stuck at VCC    ;
-; hz[4..3]   ; Input ; Info     ; Stuck at VCC    ;
-; hz[31..19] ; Input ; Info     ; Stuck at GND    ;
-; hz[7..5]   ; Input ; Info     ; Stuck at GND    ;
-; hz[18]     ; Input ; Info     ; Stuck at VCC    ;
-; hz[17]     ; Input ; Info     ; Stuck at GND    ;
-; hz[13]     ; Input ; Info     ; Stuck at GND    ;
-; hz[12]     ; Input ; Info     ; Stuck at VCC    ;
-; hz[11]     ; Input ; Info     ; Stuck at GND    ;
-; hz[10]     ; Input ; Info     ; Stuck at VCC    ;
-; hz[9]      ; Input ; Info     ; Stuck at GND    ;
-; hz[8]      ; Input ; Info     ; Stuck at VCC    ;
-; hz[2]      ; Input ; Info     ; Stuck at GND    ;
-; hz[1]      ; Input ; Info     ; Stuck at VCC    ;
-; hz[0]      ; Input ; Info     ; Stuck at GND    ;
-+------------+-------+----------+-----------------+
-
-
 +------------------------------------------------+
-; Port Connectivity Checks: "Triangle_Wave:TW_C" ;
+; Port Connectivity Checks: "Triangle_Wave:tw_C" ;
 +------------+-------+----------+----------------+
 ; Port       ; Type  ; Severity ; Details        ;
 +------------+-------+----------+----------------+
@@ -1261,6 +1217,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; hz[2]      ; Input ; Info     ; Stuck at VCC   ;
 ; hz[1]      ; Input ; Info     ; Stuck at GND   ;
 ; hz[0]      ; Input ; Info     ; Stuck at VCC   ;
++------------+-------+----------+----------------+
+
+
++------------------------------------------------+
+; Port Connectivity Checks: "Scratch_Wave:ScW_C" ;
++------------+-------+----------+----------------+
+; Port       ; Type  ; Severity ; Details        ;
++------------+-------+----------+----------------+
+; hz[16..14] ; Input ; Info     ; Stuck at VCC   ;
+; hz[4..3]   ; Input ; Info     ; Stuck at VCC   ;
+; hz[31..19] ; Input ; Info     ; Stuck at GND   ;
+; hz[7..5]   ; Input ; Info     ; Stuck at GND   ;
+; hz[18]     ; Input ; Info     ; Stuck at VCC   ;
+; hz[17]     ; Input ; Info     ; Stuck at GND   ;
+; hz[13]     ; Input ; Info     ; Stuck at GND   ;
+; hz[12]     ; Input ; Info     ; Stuck at VCC   ;
+; hz[11]     ; Input ; Info     ; Stuck at GND   ;
+; hz[10]     ; Input ; Info     ; Stuck at VCC   ;
+; hz[9]      ; Input ; Info     ; Stuck at GND   ;
+; hz[8]      ; Input ; Info     ; Stuck at VCC   ;
+; hz[2]      ; Input ; Info     ; Stuck at GND   ;
+; hz[1]      ; Input ; Info     ; Stuck at VCC   ;
+; hz[0]      ; Input ; Info     ; Stuck at GND   ;
 +------------+-------+----------+----------------+
 
 
@@ -1347,39 +1326,39 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 264                         ;
+; arriav_ff             ; 355                         ;
 ;     CLR               ; 19                          ;
 ;     CLR SCLR          ; 16                          ;
 ;     ENA               ; 38                          ;
 ;     ENA CLR           ; 4                           ;
-;     ENA SCLR          ; 118                         ;
-;     ENA SLD           ; 32                          ;
+;     ENA SCLR          ; 145                         ;
+;     ENA SLD           ; 96                          ;
 ;     SCLR              ; 2                           ;
 ;     plain             ; 35                          ;
 ; arriav_io_obuf        ; 4                           ;
-; arriav_lcell_comb     ; 806                         ;
-;     arith             ; 152                         ;
-;         1 data inputs ; 88                          ;
+; arriav_lcell_comb     ; 3156                        ;
+;     arith             ; 217                         ;
+;         1 data inputs ; 152                         ;
 ;         2 data inputs ; 14                          ;
 ;         3 data inputs ; 25                          ;
-;         4 data inputs ; 25                          ;
-;     extend            ; 7                           ;
-;         7 data inputs ; 7                           ;
-;     normal            ; 647                         ;
+;         4 data inputs ; 26                          ;
+;     extend            ; 9                           ;
+;         7 data inputs ; 9                           ;
+;     normal            ; 2930                        ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 10                          ;
-;         2 data inputs ; 66                          ;
-;         3 data inputs ; 70                          ;
-;         4 data inputs ; 106                         ;
-;         5 data inputs ; 194                         ;
-;         6 data inputs ; 200                         ;
-; arriav_mac            ; 18                          ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 266                         ;
+;         3 data inputs ; 292                         ;
+;         4 data inputs ; 451                         ;
+;         5 data inputs ; 756                         ;
+;         6 data inputs ; 1163                        ;
+; arriav_mac            ; 106                         ;
 ; boundary_port         ; 22                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 64                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 11.00                       ;
-; Average LUT depth     ; 5.50                        ;
+; Max LUT depth         ; 10.00                       ;
+; Average LUT depth     ; 7.49                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1388,7 +1367,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:04     ;
+; Top            ; 00:00:22     ;
 +----------------+--------------+
 
 
@@ -1398,7 +1377,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Nov 21 08:50:14 2019
+    Info: Processing started: Thu Nov 21 09:31:14 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LaunchPad -c LaunchPad
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -1550,7 +1529,8 @@ Warning (10230): Verilog HDL assignment warning at I2C_Controller.v(79): truncat
 Warning (10230): Verilog HDL assignment warning at I2C_Controller.v(78): truncated value with size 32 to match size of target (1) File: C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/avconf/I2C_Controller.v Line: 78
 Warning (10230): Verilog HDL assignment warning at I2C_Controller.v(91): truncated value with size 32 to match size of target (6) File: C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/avconf/I2C_Controller.v Line: 91
 Info (12128): Elaborating entity "Square_Wave" for hierarchy "Square_Wave:SW_C" File: C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/LaunchPad.v Line: 102
-Info (12128): Elaborating entity "Triangle_Wave" for hierarchy "Triangle_Wave:TW_C" File: C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/LaunchPad.v Line: 110
+Info (12128): Elaborating entity "Scratch_Wave" for hierarchy "Scratch_Wave:ScW_C" File: C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/LaunchPad.v Line: 110
+Info (12128): Elaborating entity "Triangle_Wave" for hierarchy "Triangle_Wave:tw_C" File: C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/LaunchPad.v Line: 118
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
         Warning (14320): Synthesized away node "Audio_Controller:AC|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|Altera_UP_SYNC_FIFO:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_7ba1:auto_generated|a_dpfifo_q2a1:dpfifo|altsyncram_n3i1:FIFOram|q_b[0]" File: C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/db/altsyncram_n3i1.tdf Line: 37
@@ -2023,18 +2003,18 @@ Warning (21074): Design contains 10 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/LaunchPad.v Line: 4
     Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/LaunchPad.v Line: 4
     Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/szhen/Documents/Expand_2.0/launchpad_but_on_a_fpga/LaunchPad.v Line: 4
-Info (21057): Implemented 946 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 3372 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 3 output pins
     Info (21060): Implemented 4 bidirectional pins
-    Info (21061): Implemented 841 logic cells
+    Info (21061): Implemented 3179 logic cells
     Info (21064): Implemented 64 RAM segments
     Info (21065): Implemented 1 PLLs
-    Info (21062): Implemented 18 DSP elements
+    Info (21062): Implemented 106 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 482 warnings
-    Info: Peak virtual memory: 4881 megabytes
-    Info: Processing ended: Thu Nov 21 08:50:33 2019
-    Info: Elapsed time: 00:00:19
-    Info: Total CPU time (on all processors): 00:00:32
+    Info: Peak virtual memory: 4945 megabytes
+    Info: Processing ended: Thu Nov 21 09:31:59 2019
+    Info: Elapsed time: 00:00:45
+    Info: Total CPU time (on all processors): 00:01:05
 
 

@@ -1,0 +1,51 @@
+//low C to high C + bass + scratch
+
+module recordsequence{
+	//clock, note sequence, record mode
+	
+	localparam S_LOAD_NOTES = 0,
+				  S_LOAD_NOTES_WAIT = 1;
+	
+	localparam current_state, next_state;
+	localparam [5:0] address;
+	
+	always@(posedge clock)begin
+		if (reset) begin
+			write_en <= 0;
+			end
+		if (record_mode) begin
+			if (record) begin
+				write_en <= 1;
+				end
+			if (!record) begin
+				write_en <=0;
+				end
+		end
+	end
+	// Next state logic aka our state table
+    always@(*)
+    begin: state_table 
+            case (current_state)
+                S_LOAD_A: next_state = record ? S_LOAD_NOTES_WAIT : S_LOAD_NOTES; // Loop in current state until value is input
+                S_LOAD_A_WAIT: next_state = record ? S_LOAD_A_WAIT : S_LOAD_NOTES; // Loop in current state until go signal goes loW
+            default:     next_state = S_LOAD_NOTES;
+        endcase
+    end // state_table
+	
+	// Output logic aka all of our datapath control signals
+    always @(*)
+    begin: enable_signals
+        address = 6'b0;
+
+        case (current_state)
+            S_LOAD_NOTES_WAIT: begin	//changes to next memory address after the wait
+					address <= address + 1;
+					if (address == 6'b111111) begin
+						address <= 0;
+						end
+               end
+        // default:    // don't need default since we already made sure all of our outputs were assigned a value at the start of the always block
+        endcase
+    end // enable_signals
+	sequence_ram(address, clock, data, wren, q);
+	// write to sequence of address 

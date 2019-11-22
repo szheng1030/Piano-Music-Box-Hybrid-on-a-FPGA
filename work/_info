@@ -1,0 +1,91 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/ywang/Documents/launchpad_but_on_a_fpga
+vrecordsequence
+!s110 1574381173
+!i10b 1
+!s100 a`2@]02hbimf[NGWhcDoQ2
+I8Ce><joI4EhR05[YD6V0T2
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1574380977
+8recordsequence.v
+Frecordsequence.v
+L0 3
+Z2 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1574381173.000000
+!s107 recordsequence.v|
+!s90 -reportprogress|300|recordsequence.v|
+!i113 1
+Z3 tCvgOpt 0
+vsnare_wave
+!s110 1574313302
+!i10b 1
+!s100 lCIlJ`?Q:WT:YBWB<>QSg1
+Ioz1k@cfbo_^bQ:P:<9BjD3
+R1
+R0
+w1574313200
+8snare_wave.v
+Fsnare_wave.v
+L0 1
+R2
+r1
+!s85 0
+31
+!s108 1574313302.000000
+!s107 snare_wave.v|
+!s90 -reportprogress|300|snare_wave.v|
+!i113 1
+R3
+vsnaredrum
+!s110 1574311126
+!i10b 1
+!s100 ]X?i0LJ>I4M:To?F7EPCf0
+ICR18nPz;A;LFof<Q4`08W1
+R1
+R0
+w1574310358
+8snaredrum.v
+Fsnaredrum.v
+L0 39
+R2
+r1
+!s85 0
+31
+!s108 1574311126.000000
+!s107 snaredrum.v|
+!s90 -reportprogress|300|snaredrum.v|
+!i113 1
+R3
+vTriangle_Wave
+!s110 1574307690
+!i10b 1
+!s100 PZo9EYg::6b:Qb:zkLPOl0
+ITN@S^9>:Jo;LJQb>GoHnL2
+R1
+R0
+w1574307572
+8Triangle_Wave.v
+FTriangle_Wave.v
+L0 1
+R2
+r1
+!s85 0
+31
+!s108 1574307690.000000
+!s107 Triangle_Wave.v|
+!s90 -reportprogress|300|Triangle_Wave.v|
+!i113 1
+R3
+n@triangle_@wave

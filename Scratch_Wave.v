@@ -6,7 +6,7 @@ module Scratch_Wave(
   output [31:0]audio_out
 );
 
-localparam AMP_1 = 32'd2620000000;
+localparam AMP_1 = 32'd262000000;
 localparam AMP_2 = -32'd284000000;
 localparam AMP_3 = 32'd174000000;
 localparam AMP_4 = -32'd201000000;
@@ -77,7 +77,9 @@ always@(posedge clock)begin
     counter <= hz;
     end
   if (play_note) begin
-    counter <= counter - 1'b1;
+	 if (counter != 0) begin
+		counter <= counter - 1'b1;
+		end
     if (counter > (hz / 100 * 99)) begin
       amp <= AMP_1;
       end
@@ -260,9 +262,6 @@ always@(posedge clock)begin
       end
     if (counter <= (hz / 100 * 40)) begin
       amp <= 32'b0;
-      end
-    if (counter == 0) begin
-      counter <= hz;
       end
   end
 end

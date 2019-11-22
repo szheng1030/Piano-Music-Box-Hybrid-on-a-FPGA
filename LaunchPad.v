@@ -10,7 +10,9 @@ module LaunchPad(
 	inout	AUD_ADCLRCK,
 	inout	AUD_DACLRCK,
 	output AUD_XCK,
-	output AUD_DACDAT
+	output AUD_DACDAT,
+	
+	output [9:0]LEDR
 	);
 
 	Audio_Controller AC(
@@ -93,6 +95,20 @@ module LaunchPad(
 	assign clear_audio_out_memory = ~|audio_out;
 	assign write_audio_out = |audio_out;
 
+	wire [9:0] test_sequence;
+	assign LEDR = note_gates;
+	
+	wire [9:0] note_gates;
+	wire C_gate = (~KEY[1]) ? note_gates[0] : SW[0];
+	wire D_gate = (~KEY[1]) ? note_gates[1] : SW[1];
+	wire E_gate = (~KEY[1]) ? note_gates[2] : SW[2];
+	wire F_gate = (~KEY[1]) ? note_gates[3] : SW[3];
+	wire G_gate = (~KEY[1]) ? note_gates[4] : SW[4];
+	wire A_gate = (~KEY[1]) ? note_gates[5] : SW[5];
+	wire B_gate = (~KEY[1]) ? note_gates[6] : SW[6];
+	wire CC_gate = (~KEY[1]) ? note_gates[7] : SW[7];
+	
+	/*
 	Square_Wave SW_C(
 		.clock(CLOCK_50),
 		.reset(SW[9]),
@@ -116,8 +132,21 @@ module LaunchPad(
 			.hz(HZ_C[31:0]),
 			.audio_out(audio_out_E[31:0])
 			);
-
-
+	*/
+	recordsequence r1(
+			.clock(CLOCK_50),
+			.reset(SW[9]),
+			.record_mode(SW[8]),
+			.record(~KEY[0]),
+			.note_sequence({2'b00, SW[7:0]}),
+			.saved_sequence(test_sequence)
+			);
+	playsequence(
+		.clock(CLOCK_50),
+		.reset(SW[9]),
+		.play_seq(~KEY[1]),
+		.note_gates(note_gates)
+		);
 /*
 	test2 t2(
 		.clock(CLOCK_50),
@@ -126,11 +155,11 @@ module LaunchPad(
 		.hz(HZ_C[31:0]),
 		.audio_out(testing[31:0])
 		);
-
+*/
 	Wave_Generator WG_C(
 		.clock(CLOCK_50),
 		.reset(SW[9]),
-		.play_note(SW[0]),
+		.play_note(C_gate),
 		.hz(HZ_C[31:0]),
 		.audio_out(audio_out_C[31:0])
 		);
@@ -138,7 +167,7 @@ module LaunchPad(
 	Wave_Generator WG_D(
 		.clock(CLOCK_50),
 		.reset(SW[9]),
-		.play_note(SW[1]),
+		.play_note(D_gate),
 		.hz(HZ_D[31:0]),
 		.audio_out(audio_out_D[31:0])
 		);
@@ -146,7 +175,7 @@ module LaunchPad(
 	Wave_Generator WG_E(
 		.clock(CLOCK_50),
 		.reset(SW[9]),
-		.play_note(SW[2]),
+		.play_note(E_gate),
 		.hz(HZ_E[31:0]),
 		.audio_out(audio_out_E[31:0])
 		);
@@ -154,7 +183,7 @@ module LaunchPad(
 	Wave_Generator WG_F(
 		.clock(CLOCK_50),
 		.reset(SW[9]),
-		.play_note(SW[3]),
+		.play_note(F_gate),
 		.hz(HZ_F[31:0]),
 		.audio_out(audio_out_F[31:0])
 		);
@@ -162,7 +191,7 @@ module LaunchPad(
 	Wave_Generator WG_G(
 		.clock(CLOCK_50),
 		.reset(SW[9]),
-		.play_note(SW[4]),
+		.play_note(G_gate),
 		.hz(HZ_G[31:0]),
 		.audio_out(audio_out_G[31:0])
 		);
@@ -170,7 +199,7 @@ module LaunchPad(
 	Wave_Generator WG_A(
 		.clock(CLOCK_50),
 		.reset(SW[9]),
-		.play_note(SW[5]),
+		.play_note(A_gate),
 		.hz(HZ_A[31:0]),
 		.audio_out(audio_out_A[31:0])
 		);
@@ -178,7 +207,7 @@ module LaunchPad(
 	Wave_Generator WG_B(
 		.clock(CLOCK_50),
 		.reset(SW[9]),
-		.play_note(SW[6]),
+		.play_note(B_gate),
 		.hz(HZ_B[31:0]),
 		.audio_out(audio_out_B[31:0])
 		);
@@ -187,8 +216,8 @@ module LaunchPad(
 	Wave_Generator WG_CC(
 		.clock(CLOCK_50),
 		.reset(SW[9]),
-		.play_note(SW[7]),
-		.hz(HZ_CC[31:0]),
+		.play_note(CC_gate),
+		.hz(HZ_C1[31:0]),
 		.audio_out(audio_out_CC[31:0])
 		);
 
@@ -229,6 +258,6 @@ module Wave_Generator(
 				end
 		end
 	end
-*/
+
 
 endmodule

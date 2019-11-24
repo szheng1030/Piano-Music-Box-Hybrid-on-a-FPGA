@@ -1,6 +1,6 @@
 Flow report for LaunchPad
-Thu Nov 21 20:35:13 2019
-Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition
+Sat Nov 23 21:24:32 2019
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
 ---------------------
@@ -37,29 +37,29 @@ refer to the applicable agreement for further details.
 
 
 
-+-----------------------------------------------------------------------------------+
-; Flow Summary                                                                      ;
-+---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Thu Nov 21 20:34:12 2019           ;
-; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Standard Edition ;
-; Revision Name                   ; LaunchPad                                       ;
-; Top-level Entity Name           ; LaunchPad                                       ;
-; Family                          ; Cyclone V                                       ;
-; Device                          ; 5CSEMA5F31C6                                    ;
-; Timing Models                   ; Final                                           ;
-; Logic utilization (in ALMs)     ; 484 / 32,070 ( 2 % )                            ;
-; Total registers                 ; 514                                             ;
-; Total pins                      ; 32 / 457 ( 7 % )                                ;
-; Total virtual pins              ; 0                                               ;
-; Total block memory bits         ; 8,832 / 4,065,280 ( < 1 % )                     ;
-; Total DSP Blocks                ; 0 / 87 ( 0 % )                                  ;
-; Total HSSI RX PCSs              ; 0                                               ;
-; Total HSSI PMA RX Deserializers ; 0                                               ;
-; Total HSSI TX PCSs              ; 0                                               ;
-; Total HSSI PMA TX Serializers   ; 0                                               ;
-; Total PLLs                      ; 1 / 6 ( 17 % )                                  ;
-; Total DLLs                      ; 0 / 4 ( 0 % )                                   ;
-+---------------------------------+-------------------------------------------------+
++-------------------------------------------------------------------------------+
+; Flow Summary                                                                  ;
++---------------------------------+---------------------------------------------+
+; Flow Status                     ; Successful - Sat Nov 23 21:24:04 2019       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; LaunchPad                                   ;
+; Top-level Entity Name           ; LaunchPad                                   ;
+; Family                          ; Cyclone V                                   ;
+; Device                          ; 5CSEMA5F31C6                                ;
+; Timing Models                   ; Final                                       ;
+; Logic utilization (in ALMs)     ; 1,682 / 32,070 ( 5 % )                      ;
+; Total registers                 ; 554                                         ;
+; Total pins                      ; 32 / 457 ( 7 % )                            ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 8,192 / 4,065,280 ( < 1 % )                 ;
+; Total DSP Blocks                ; 30 / 87 ( 34 % )                            ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 1 / 6 ( 17 % )                              ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                               ;
++---------------------------------+---------------------------------------------+
 
 
 +-----------------------------------------+
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/21/2019 20:30:55 ;
+; Start date & time ; 11/23/2019 21:19:41 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; LaunchPad           ;
 +-------------------+---------------------+
@@ -78,10 +78,9 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 167746773772205.157438625303288        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 739219129912.157456198034876           ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
-; MISC_FILE                           ; sequence_ram_bb.v                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -96,11 +95,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:45     ; 1.0                     ; 768 MB              ; 00:00:31                           ;
-; Fitter               ; 00:00:52     ; 1.1                     ; 2669 MB             ; 00:01:28                           ;
-; Assembler            ; 00:00:36     ; 1.0                     ; 734 MB              ; 00:00:07                           ;
-; Timing Analyzer      ; 00:00:53     ; 1.0                     ; 1094 MB             ; 00:00:09                           ;
-; Total                ; 00:03:06     ; --                      ; --                  ; 00:02:15                           ;
+; Analysis & Synthesis ; 00:01:13     ; 1.0                     ; 4940 MB             ; 00:01:43                           ;
+; Fitter               ; 00:02:46     ; 1.2                     ; 6654 MB             ; 00:05:35                           ;
+; Assembler            ; 00:00:19     ; 1.0                     ; 4878 MB             ; 00:00:18                           ;
+; Timing Analyzer      ; 00:00:26     ; 2.0                     ; 5243 MB             ; 00:00:43                           ;
+; Total                ; 00:04:44     ; --                      ; --                  ; 00:08:19                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -109,10 +108,10 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; BA3135WS15       ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; BA3135WS15       ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; BA3135WS15       ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; BA3135WS15       ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; LAPTOP-I7EJ2Q1V  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; LAPTOP-I7EJ2Q1V  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; LAPTOP-I7EJ2Q1V  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; LAPTOP-I7EJ2Q1V  ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 

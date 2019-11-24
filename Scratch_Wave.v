@@ -264,12 +264,9 @@ always@(posedge clock)begin
     if (counter <= (hz / 100 * 40)) begin
       amp <= 32'b0;
       end
-<<<<<<< HEAD
-    //if (counter == 0) begin
-    //  counter <= hz;
-    //  end
-=======
->>>>>>> 50cf75e519c27dd6326671221f3f9966be9f74ca
+    if (counter == 0) begin
+      counter <= hz;
+      end
   end
 end
 endmodule

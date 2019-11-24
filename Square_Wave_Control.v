@@ -22,6 +22,9 @@ module Square_Wave_Control(
 	input SW_G1,
 	input SW_A1,
 	input SW_B1,
+	input SW_F2,
+	input SW_G1f,
+	input SW_G1s,
 	output [31:0]SW_OUTPUT
 	);
 	
@@ -46,6 +49,9 @@ module Square_Wave_Control(
 	parameter HZ_G1 = 32'd63776;
 	parameter HZ_A1 = 32'd56818;
 	parameter HZ_B1 = 32'd50619;
+	parameter HZ_F2 = 32'd35793;
+	parameter HZ_G1f = 32'd67568;
+	parameter HZ_G1s = 32'd60197;
 	
 	wire signed [31:0] audio_out_1C;
 	wire signed [31:0] audio_out_1D;
@@ -68,10 +74,14 @@ module Square_Wave_Control(
 	wire signed [31:0] audio_out_G1;
 	wire signed [31:0] audio_out_A1;
 	wire signed [31:0] audio_out_B1;
+	wire signed [31:0] audio_out_F2;
+	wire signed [31:0] audio_out_G1f;
+	wire signed [31:0] audio_out_G1s;
 	
 	assign SW_OUTPUT = audio_out_1C + audio_out_1D +  audio_out_1E + audio_out_1F + audio_out_1G + audio_out_1A + audio_out_1B +
 								audio_out_C + audio_out_D +  audio_out_E + audio_out_F + audio_out_G + audio_out_A + audio_out_B +
-								audio_out_C1 + audio_out_D1 +  audio_out_E1 + audio_out_F1 + audio_out_G1 + audio_out_A1 + audio_out_B1;
+								audio_out_C1 + audio_out_D1 +  audio_out_E1 + audio_out_F1 + audio_out_G1 + audio_out_A1 + audio_out_B1 +
+								audio_out_F2 + audio_out_G1f + audio_out_G1s;
 								
 	Square_Wave SW1C(
 		.clock(clock),
@@ -239,6 +249,30 @@ module Square_Wave_Control(
 		.play_note(SW_B1),
 		.hz(HZ_B1[31:0]),
 		.audio_out(audio_out_B1[31:0])
+		);
+		
+	Square_Wave SWF2(
+		.clock(clock),
+		.reset(reset),
+		.play_note(SW_F2),
+		.hz(HZ_F2[31:0]),
+		.audio_out(audio_out_F2[31:0])
+		);
+	
+	Square_Wave SWG1f(
+		.clock(clock),
+		.reset(reset),
+		.play_note(SW_G1f),
+		.hz(HZ_G1f[31:0]),
+		.audio_out(audio_out_G1f[31:0])
+		);
+		
+	Square_Wave SWG1s(
+		.clock(clock),
+		.reset(reset),
+		.play_note(SW_G1s),
+		.hz(HZ_G1s[31:0]),
+		.audio_out(audio_out_G1s[31:0])
 		);
 	
 endmodule

@@ -6,7 +6,7 @@ module Flat_Wave(
 	output [31:0]audio_out
 	);
 	
-	localparam AMPLITUDE = 32'd300000000;
+	localparam AMPLITUDE = 32'd200000000;
 	
 	reg signed [31:0]amp;
 	reg [31:0] counter;

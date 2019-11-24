@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Sat Nov 23 21:20:54 2019
+Analysis & Synthesis Status : Successful - Sun Nov 24 13:52:23 2019
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : LaunchPad
 Top-level Entity Name : LaunchPad
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 514
+Total registers : 574
 Total pins : 32
 Total virtual pins : 0
 Total block memory bits : 8,192
-Total DSP Blocks : 30
+Total DSP Blocks : 0
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
 Total HSSI TX PCSs : 0

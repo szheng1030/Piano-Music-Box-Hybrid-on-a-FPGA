@@ -26,7 +26,7 @@ module Square_Wave(
 			amp <= 32'b0;
 			counter <= hz;
 			end
-		if (play_note) begin
+		else begin
 			counter <= counter - 1'b1;
 			if (counter > (hz / 20 * 19)) begin
 				amp <= AMP_1;

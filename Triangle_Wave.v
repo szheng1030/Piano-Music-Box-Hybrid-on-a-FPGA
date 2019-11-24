@@ -3,29 +3,30 @@ module Triangle_Wave(
 	input reset,
 	input play_note,
 	input [31:0]hz,
+	input [3:0]duration,
 	output [31:0]audio_out
 	);
 
-  localparam MINAMPLITUDE = -32'd300000000;
-  localparam RISE_1 = -32'd150000000;
-  localparam RISE_2 = -32'd50000000;
-  localparam RISE_3 = 32'd50000000;
-  localparam RISE_4 = 32'd1200000000;
-  localparam RISE_5 = 32'd2000000000;
-  localparam RISE_6 = 32'd2400000000;
-  localparam RISE_7 = 32'd2700000000;
-  localparam MAXAMPLITUDE = 32'd300000000;
-  localparam FALL_1 = 32'd200000000;
-  localparam FALL_2 = 32'd120000000;
-  localparam FALL_3 = 32'd40000000;
-  localparam FALL_4 = -32'd30000000;
-  localparam FALL_5 = -32'd90000000;
-  localparam FALL_6 = -32'd140000000;
-  localparam FALL_7 = -32'd180000000;
-  localparam FALL_8 = -32'd220000000;
-  localparam FALL_9 = -32'd250000000;
-  localparam FALL_10 = -32'd270000000;
-  localparam FALL_11 = -32'd290000000;
+  localparam MINAMPLITUDE = -32'd150000000;
+  localparam RISE_1 = -32'd75000000;
+  localparam RISE_2 = -32'd25000000;
+  localparam RISE_3 = 32'd25000000;
+  localparam RISE_4 = 32'd600000000;
+  localparam RISE_5 = 32'd1000000000;
+  localparam RISE_6 = 32'd1200000000;
+  localparam RISE_7 = 32'd1350000000;
+  localparam MAXAMPLITUDE = 32'd150000000;
+  localparam FALL_1 = 32'd100000000;
+  localparam FALL_2 = 32'd60000000;
+  localparam FALL_3 = 32'd20000000;
+  localparam FALL_4 = -32'd15000000;
+  localparam FALL_5 = -32'd45000000;
+  localparam FALL_6 = -32'd70000000;
+  localparam FALL_7 = -32'd90000000;
+  localparam FALL_8 = -32'd110000000;
+  localparam FALL_9 = -32'd125000000;
+  localparam FALL_10 = -32'd135000000;
+  localparam FALL_11 = -32'd145000000;
 
   reg signed [31:0] amp;
   reg [31:0] counter;
@@ -34,7 +35,7 @@ module Triangle_Wave(
   always@(posedge clock) begin
     if (reset) begin
       amp <= 32'b0;
-      counter <= hz;
+      counter <= hz / duration;
       end
     if (play_note) begin
 		counter <= counter - 1'b1;

@@ -3,6 +3,7 @@ module Scratch_Wave(
   input reset,
   input play_note,
   input [31:0]hz,
+  input [3:0]duration,
   output [31:0]audio_out
 );
 
@@ -74,7 +75,7 @@ assign audio_out[31:0] = play_note ? amp : 32'b0;
 always@(posedge clock)begin
   if (reset) begin
     amp <= 32'b0;
-    counter <= hz;
+    counter <= hz / duration;
     end
   if (play_note) begin
 	 if (counter != 0) begin
@@ -263,6 +264,12 @@ always@(posedge clock)begin
     if (counter <= (hz / 100 * 40)) begin
       amp <= 32'b0;
       end
+<<<<<<< HEAD
+    //if (counter == 0) begin
+    //  counter <= hz;
+    //  end
+=======
+>>>>>>> 50cf75e519c27dd6326671221f3f9966be9f74ca
   end
 end
 endmodule

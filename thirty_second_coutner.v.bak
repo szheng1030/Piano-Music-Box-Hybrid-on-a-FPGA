@@ -1,0 +1,26 @@
+module thirty_second_counter(
+	input clock,
+	input reset,
+	input start,
+	output second_32
+	);
+	
+	reg [31:0]counter_32;
+	
+	always@(posedge CLOCK_50) begin
+		if (SW[9]) begin
+			counter_32 <= 32'b0;
+			second_32 <= 1'b0;
+			end
+		if (SW[0]) begin
+			counter_32 <= counter_32 + 1'b1;
+			
+			if (counter_32 >= 32'd1562500) begin
+				second_32 <= 1'b1;
+				counter_32 <= 32'b0;
+				end
+			else begin
+				second_32 <= 1'b0;
+				end
+			end
+		end	

@@ -16,6 +16,12 @@ We have realized that it is not possible to recreate sounds through the fpga aki
 - Notes over the second octave sound bad (Starting with C6)
 - Flats and Sharps sometimes sound out of place
 - Flat_Wave (undampened square waves) take MUCH LESS TIME to compile than Square_Wave (dampened square waves) and the two do not sound much different (About 2.5 mins versus near 8 mins)
-- I need song suggestion for 2nd song
+
+===============================================================================
+
+**Nov.26 Updates**
+
+- Weight of the World (~1:40): Complete!
+- Jump Up, Superstar (~0:45): Chorus Complete!
 
 ===============================================================================

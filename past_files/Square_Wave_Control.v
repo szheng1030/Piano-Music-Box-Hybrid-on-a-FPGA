@@ -1,13 +1,13 @@
 module Square_Wave_Control(
 	input clock,
 	input reset,
-	input SW_1C,
+	/*input SW_1C,
 	input SW_1D,
 	input SW_1E,
 	input SW_1F,
 	input SW_1G,
 	input SW_1A,
-	input SW_1B,
+	input SW_1B,*/
 	input SW_C,
 	input SW_D,
 	input SW_E,
@@ -16,7 +16,7 @@ module Square_Wave_Control(
 	input SW_A,
 	input SW_B,
 	input SW_C1,
-	input SW_D1,
+	/*input SW_D1,
 	input SW_E1,
 	input SW_F1,
 	input SW_G1,
@@ -24,7 +24,7 @@ module Square_Wave_Control(
 	input SW_B1,
 	input SW_F2,
 	input SW_G1f,
-	input SW_G1s,
+	input SW_G1s,*/
 	output [31:0]SW_OUTPUT
 	);
 	
